@@ -11,7 +11,7 @@ La 3ra Compañía del Cuerpo de Bomberos de Los Ángeles registra asistencias, e
 | Actor | Necesidad |
 |---|---|
 | Voluntarios y oficiales | Consultar y registrar información operativa desde el navegador |
-| Equipo DevOps (integrantes del proyecto) | Desplegar y modificar la infraestructura de forma segura y trazable |
+| Responsable DevOps del proyecto | Desplegar y modificar la infraestructura de forma segura y trazable |
 | Directiva de la compañía | Saber cuándo el sistema falla y quién hizo cada cambio |
 
 ## 2. Requerimientos funcionales

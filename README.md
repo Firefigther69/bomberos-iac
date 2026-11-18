@@ -26,7 +26,7 @@ Infraestructura como código para la **plataforma web de gestión operativa de l
 10. [Logging y auditoría](#10-logging-y-auditoría)
 11. [Seguridad](#11-seguridad)
 12. [Evidencias](#12-evidencias)
-13. [Integrantes](#13-integrantes)
+13. [Autor](#13-autor)
 14. [Reflexión final](#14-reflexión-final)
 
 Documentación detallada en [`docs/`](docs/):
@@ -309,21 +309,17 @@ Despliegue real del 16-11-2026 en AWS Academy Learner Lab. El resumen, los incid
 
 El número de cuenta y los datos personales están enmascarados en todas las evidencias.
 
-## 13. Integrantes
+## 13. Autor
 
-| Integrante | Rol en el proyecto | Áreas principales |
-|---|---|---|
-| Gino Cortés Leiva | Arquitectura y seguridad | `network.tf`, `iam.tf`, `kms.tf`, `secrets.tf`, `security_groups.tf`, `policies/` |
-| [Integrante 2] | Observabilidad | `logging.tf`, `alarms.tf`, `dashboard.tf`, `audit.tf`, `sns.tf` |
-| [Integrante 3] | Automatización y pruebas | `cicd.tf`, `buildspec/`, `tests/`, `.github/`, `scripts/` |
+| Autor | Responsabilidad |
+|---|---|
+| Gino Cortés Leiva | Trabajo individual: arquitectura, seguridad, observabilidad, automatización, pruebas, despliegue y documentación |
 
-La contribución individual queda registrada en el historial de commits (ver [CONTRIBUTING.md](CONTRIBUTING.md)).
-
-**Docente:** [Nombre del docente]
+El historial de commits registra el desarrollo del proyecto (ver [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## 14. Reflexión final
 
-**Aprendizajes.** Escribir pruebas antes de desplegar cambió la forma de trabajar del equipo. Las pruebas unitarias con proveedor simulado detectaron un error que habría hecho fallar el primer despliegue, y las políticas propias detectaron roles sin límite de duración de sesión. El control automático de trazabilidad mostró que un tercio de los requerimientos no tenía prueba aunque la matriz manual parecía completa: la correspondencia entre pruebas y requerimientos debe verificarse con código, no solo documentarse. También comprendimos que monitorear es decidir qué preguntas se quieren responder durante un incidente; por eso cada alarma referencia el requerimiento que protege.
+**Aprendizajes.** Escribir pruebas antes de desplegar cambió mi forma de trabajar. Las pruebas unitarias con proveedor simulado detectaron un error que habría hecho fallar el primer despliegue, y las políticas propias detectaron roles sin límite de duración de sesión. El control automático de trazabilidad mostró que un tercio de los requerimientos no tenía prueba aunque la matriz manual parecía completa: la correspondencia entre pruebas y requerimientos debe verificarse con código, no solo documentarse. También comprendí que monitorear es decidir qué preguntas se quieren responder durante un incidente; por eso cada alarma referencia el requerimiento que protege.
 
 **Dificultades.** La principal fue conciliar el mínimo privilegio con AWS Academy, que no permite crear roles; se resolvió con un diseño dual (`use_lab_role`) que mantiene los roles dedicados para cuentas reales. El despliegue real reveló además tres restricciones que las pruebas simuladas no podían anticipar (lectura de buckets por Terraform, CodeBuild y VPC Flow Logs con `LabRole`), que se resolvieron en código.
 

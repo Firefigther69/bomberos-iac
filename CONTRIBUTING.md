@@ -10,7 +10,7 @@
    - `test(security): valida IMDSv2 obligatorio (RS-02)`
    - `docs(informe): justificación de métricas`
 4. Incluir el ID del requerimiento afectado en el mensaje cuando corresponda.
-5. Abrir un *pull request* hacia `main`. Debe pasar GitHub Actions y ser revisado por otro integrante.
+5. Abrir un *pull request* hacia `main`. Debe pasar GitHub Actions antes del merge.
 6. Después del merge, desplegar con `./scripts/deploy.sh` y ejecutar CodeBuild `integration`.
 
 ## Reglas

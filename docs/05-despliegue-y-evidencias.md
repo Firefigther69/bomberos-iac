@@ -29,7 +29,7 @@ Registro del despliegue real del proyecto y de las pruebas en operación. Todas 
 | 20:02–20:04 | `denegado`: llamadas API no permitidas desde la instancia | 20:05:36 alarma `sec-unauthorized-api-calls` en ALARM. La consulta guardada `accesos-denegados` muestra 31 eventos `AccessDenied` | `capturas/E19-accesos-denegados.jpg` |
 | 20:01 | `cpu`: carga sostenida de CPU | La instancia (t3.micro con créditos estándar, recién creada) agotó sus créditos y AWS limitó la CPU a su línea base, por lo que no superó el 80 %. La alarma `ec2-creditos-cpu-bajos` pasó a ALARM, que es el aviso temprano previsto para ese caso | `plataforma/graficos/01-cpu-con-alarma.png`, `plataforma/20-alarmas.txt` |
 | 20:01 | `trafico`: 600 solicitudes, 30 % a rutas inexistentes | Métricas `HTTPRequests` y `HTTP4xx` generadas desde los logs JSON | `plataforma/graficos/05-solicitudes-http.png`, `capturas/E05-dashboard.jpg` |
-| 20:05–20:06 | Sin intervención del equipo: la plataforma del laboratorio modificó una política IAM (`PutRolePolicy`) | 20:08:07 alarma `sec-iam-policy-changes` en ALARM y correo recibido. Demuestra la detección de cambios de terceros en la cuenta | `capturas/E13-correos-alerta.png` |
+| 20:05–20:06 | Sin intervención manual: la plataforma del laboratorio modificó una política IAM (`PutRolePolicy`) | 20:08:07 alarma `sec-iam-policy-changes` en ALARM y correo recibido. Demuestra la detección de cambios de terceros en la cuenta | `capturas/E13-correos-alerta.png` |
 
 ## 3. Capturas de la consola
 

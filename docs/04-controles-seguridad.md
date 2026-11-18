@@ -6,7 +6,7 @@ Este documento registra cada control de seguridad del proyecto contra el estánd
 - **CIS AWS Foundations Benchmark v3.0.0** (CIS, 2024)
 - **AWS Well-Architected Framework, pilar de Seguridad**: identificadores SEC01–SEC11 (AWS, s.f.-e)
 - **OWASP Secure Headers Project** (OWASP Foundation, s.f.)
-- **Estándares propios del equipo**, codificados como políticas Checkov `CKV2_BOMB_1` a `CKV2_BOMB_6`
+- **Estándares propios del proyecto**, codificados como políticas Checkov `CKV2_BOMB_1` a `CKV2_BOMB_6`
 
 **Cómo se mantiene la trazabilidad de los controles**
 1. Cada control está en código Terraform versionado. Git registra quién lo cambió, cuándo y por qué (*commit* + *pull request*).
