@@ -315,6 +315,8 @@ El número de cuenta y los datos personales están enmascarados en todas las evi
 |---|---|
 | Gino Cortés Leiva | Trabajo individual: arquitectura, seguridad, observabilidad, automatización, pruebas, despliegue y documentación |
 
+**Asignatura:** DevOps · **Sección:** 2026/P TILE23/AOL-ELE-TILE23-C2/V Virtual ELE · **Docente:** Roberto Antonio Fica Domke
+
 El historial de commits registra el desarrollo del proyecto (ver [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## 14. Reflexión final
