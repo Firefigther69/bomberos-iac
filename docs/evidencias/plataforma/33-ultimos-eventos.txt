@@ -1,0 +1,33 @@
+# 2026-11-16T20:10:42-03:00 · aws cloudtrail lookup-events --max-results 25 --query Events[].{Hora:EventTime,Evento:EventName,Usuario:Username,Origen:EventSource} --output table
+
+-----------------------------------------------------------------------------------------------------------------------------
+|                                                       LookupEvents                                                        |
++-------------------------+---------------+--------------------------------+------------------------------------------------+
+|         Evento          |     Hora      |            Origen              |                    Usuario                     |
++-------------------------+---------------+--------------------------------+------------------------------------------------+
+|  GenerateDataKey        |  1794870517.0 |  kms.amazonaws.com             |  None                                          |
+|  GenerateDataKey        |  1794870515.0 |  kms.amazonaws.com             |  None                                          |
+|  GenerateDataKey        |  1794870509.0 |  kms.amazonaws.com             |  i-0e9521f3bd1a77cfa                           |
+|  GenerateDataKey        |  1794870507.0 |  kms.amazonaws.com             |  None                                          |
+|  Decrypt                |  1794870505.0 |  kms.amazonaws.com             |  None                                          |
+|  DescribeAlarms         |  1794870504.0 |  monitoring.amazonaws.com      |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  GenerateDataKey        |  1794870504.0 |  kms.amazonaws.com             |  None                                          |
+|  GetRole                |  1794870500.0 |  iam.amazonaws.com             |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  GetCostAndUsage        |  1794870498.0 |  ce.amazonaws.com              |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  DescribeRegions        |  1794870498.0 |  ec2.amazonaws.com             |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  GetAccountPlanState    |  1794870498.0 |  freetier.amazonaws.com        |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  GetAccountPlanState    |  1794870498.0 |  freetier.amazonaws.com        |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  DescribeEventAggregates|  1794870497.0 |  health.amazonaws.com          |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  GetCostAndUsage        |  1794870497.0 |  ce.amazonaws.com              |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  DescribeEventAggregates|  1794870497.0 |  health.amazonaws.com          |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  GetAccountColor        |  1794870497.0 |  uxc.amazonaws.com             |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  DescribeEventAggregates|  1794870497.0 |  health.amazonaws.com          |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  GetSigninToken         |  1794870490.0 |  signin.amazonaws.com          |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  ConsoleLogin           |  1794870490.0 |  signin.amazonaws.com          |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva  |
+|  AssumeRole             |  1794870488.0 |  sts.amazonaws.com             |  None                                          |
+|  DescribeInstances      |  1794870488.0 |  ec2.amazonaws.com             |  sys1908162                                    |
+|  DescribeStacks         |  1794870488.0 |  cloudformation.amazonaws.com  |  sys1908162                                    |
+|  Decrypt                |  1794870487.0 |  kms.amazonaws.com             |  None                                          |
+|  DescribeKeyPairs       |  1794870487.0 |  ec2.amazonaws.com             |  sys1908162                                    |
+|  AssumeRole             |  1794870487.0 |  sts.amazonaws.com             |  None                                          |
++-------------------------+---------------+--------------------------------+------------------------------------------------+

@@ -1,0 +1,31 @@
+# 2026-11-16T20:10:35-03:00 · aws cloudwatch describe-alarms --alarm-name-prefix bomberos-la3-dev --query MetricAlarms[].{Alarma:AlarmName,Estado:StateValue,Metrica:MetricName,Umbral:Threshold,Acciones:length(AlarmActions)} --output table
+
+----------------------------------------------------------------------------------------------------------------------------
+|                                                      DescribeAlarms                                                      |
++----------+--------------------------------------------------+--------------------+----------------------------+----------+
+| Acciones |                     Alarma                       |      Estado        |          Metrica           | Umbral   |
++----------+--------------------------------------------------+--------------------+----------------------------+----------+
+|  1       |  bomberos-la3-dev-app-errores-5xx                |  OK                |  HTTP5xx                   |  5.0     |
+|  1       |  bomberos-la3-dev-app-errores-nginx              |  OK                |  NginxErrors               |  10.0    |
+|  1       |  bomberos-la3-dev-app-latencia-alta              |  OK                |  ResponseTime              |  2.0     |
+|  1       |  bomberos-la3-dev-app-nginx-detenido             |  OK                |  procstat_lookup_pid_count |  1.0     |
+|  1       |  bomberos-la3-dev-ec2-cpu-alta                   |  OK                |  CPUUtilization            |  80.0    |
+|  1       |  bomberos-la3-dev-ec2-creditos-cpu-bajos         |  ALARM             |  CPUCreditBalance          |  20.0    |
+|  1       |  bomberos-la3-dev-ec2-networkin-anomalia         |  INSUFFICIENT_DATA |  None                      |  None    |
+|  1       |  bomberos-la3-dev-ec2-networkout-anomalia        |  INSUFFICIENT_DATA |  None                      |  None    |
+|  1       |  bomberos-la3-dev-ec2-status-check               |  OK                |  StatusCheckFailed         |  1.0     |
+|  2       |  bomberos-la3-dev-ec2-system-check-recuperacion  |  OK                |  StatusCheckFailed_System  |  1.0     |
+|  1       |  bomberos-la3-dev-sec-cloudtrail-changes         |  OK                |  CloudTrailConfigChanges   |  1.0     |
+|  1       |  bomberos-la3-dev-sec-console-login-failures     |  OK                |  ConsoleLoginFailures      |  3.0     |
+|  1       |  bomberos-la3-dev-sec-console-login-without-mfa  |  OK                |  ConsoleLoginWithoutMFA    |  1.0     |
+|  1       |  bomberos-la3-dev-sec-iam-policy-changes         |  ALARM             |  IAMPolicyChanges          |  1.0     |
+|  1       |  bomberos-la3-dev-sec-kms-key-disable-or-delete  |  OK                |  KMSKeyDisableOrDeletion   |  1.0     |
+|  1       |  bomberos-la3-dev-sec-network-changes            |  OK                |  NetworkConfigChanges      |  1.0     |
+|  1       |  bomberos-la3-dev-sec-root-account-usage         |  OK                |  RootAccountUsage          |  1.0     |
+|  1       |  bomberos-la3-dev-sec-s3-policy-changes          |  OK                |  S3BucketPolicyChanges     |  1.0     |
+|  1       |  bomberos-la3-dev-sec-security-group-changes     |  OK                |  SecurityGroupChanges      |  1.0     |
+|  1       |  bomberos-la3-dev-sec-unauthorized-api-calls     |  OK                |  UnauthorizedAPICalls      |  5.0     |
+|  1       |  bomberos-la3-dev-so-agente-sin-datos            |  OK                |  mem_used_percent          |  1.0     |
+|  1       |  bomberos-la3-dev-so-disco-alto                  |  OK                |  disk_used_percent         |  80.0    |
+|  1       |  bomberos-la3-dev-so-memoria-alta                |  OK                |  mem_used_percent          |  85.0    |
++----------+--------------------------------------------------+--------------------+----------------------------+----------+

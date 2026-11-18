@@ -1,0 +1,32 @@
+# CodeBuild · Etapa de pruebas de integración (solo lectura sobre la cuenta).
+# Se ejecuta tras cada despliegue y diariamente (EventBridge) para detectar deriva.
+# Los identificadores de la infraestructura llegan como variables de entorno no sensibles
+# definidas por Terraform; las credenciales son temporales y provienen del rol de CodeBuild.
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - pip install --quiet -r tests/integration/requirements.txt
+      - pip install --quiet shellcheck-py
+
+  pre_build:
+    commands:
+      - mkdir -p reports
+      - echo "Verificando ${APP_URL} (instancia ${INSTANCE_ID})"
+      - aws sts get-caller-identity --query Arn --output text
+
+  build:
+    commands:
+      - echo "[1/2] Prueba de humo"
+      - ./scripts/smoke_test.sh "${APP_URL}"
+      - echo "[2/2] Pruebas de integración"
+      - python -m pytest tests/integration -v --junitxml=reports/integration.xml
+
+reports:
+  integration-tests:
+    files: ["integration.xml"]
+    base-directory: reports
+    file-format: JUNITXML

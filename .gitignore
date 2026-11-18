@@ -1,0 +1,42 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variables y backend locales (pueden contener datos del ambiente)
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+backend.hcl
+
+# Credenciales: nunca se versionan
+.env
+.env.*
+*.pem
+*.key
+credentials
+.aws/
+
+# Salidas de pruebas y pipeline
+reports/
+outputs.json
+.pytest_cache/
+__pycache__/
+*.pyc
+.venv/
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,5 @@
+# 2026-11-16T20:11:01-03:00 · bash -c timeout 5 bash -c '</dev/tcp/54.159.242.171/22' && echo 'PUERTO 22 ABIERTO' || echo 'Puerto 22 cerrado: conexion rechazada o sin respuesta'
+
+bash: connect: Connection refused
+bash: line 1: /dev/tcp/54.159.242.171/22: Connection refused
+Puerto 22 cerrado: conexion rechazada o sin respuesta

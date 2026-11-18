@@ -1,0 +1,31 @@
+# 2026-11-16T20:10:30-03:00 · terraform output
+
+alarm_prefix = "bomberos-la3-dev"
+app_secret_parameter = "/bomberos-la3/dev/app/session-secret"
+app_url = "http://54.159.242.171"
+buckets = {
+  "access_logs" = "bomberos-la3-dev-access-logs-XXXXXXXXXXXX"
+  "artifacts" = "bomberos-la3-dev-artifacts-XXXXXXXXXXXX"
+  "cloudtrail" = "bomberos-la3-dev-cloudtrail-XXXXXXXXXXXX"
+}
+cloudtrail_name = "bomberos-la3-dev-trail"
+codebuild_projects = tomap({})
+dashboard_name = "bomberos-la3-dev-operaciones"
+dashboard_url = "https://us-east-1.console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards/dashboard/bomberos-la3-dev-operaciones"
+health_check_url = "http://54.159.242.171/health"
+instance_id = "i-0e9521f3bd1a77cfa"
+kms_key_arn = "arn:aws:kms:us-east-1:XXXXXXXXXXXX:key/64d1ca62-f3fd-4454-8109-6afbc7474a88"
+log_groups = {
+  "cloudtrail" = "/bomberos-la3/dev/audit/cloudtrail"
+  "codebuild" = "/bomberos-la3/dev/cicd/codebuild"
+  "cw_agent" = "/bomberos-la3/dev/system/cloudwatch-agent"
+  "nginx_access" = "/bomberos-la3/dev/app/nginx-access"
+  "nginx_error" = "/bomberos-la3/dev/app/nginx-error"
+  "secure" = "/bomberos-la3/dev/system/secure"
+  "system" = "/bomberos-la3/dev/system/messages"
+  "vpc_flow" = "/bomberos-la3/dev/network/vpc-flow-logs"
+}
+metrics_namespace = "BomberosLA3/EC2"
+security_group_id = "sg-04c44e8e03580d986"
+sns_topic_arn = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:bomberos-la3-dev-alerts"
+vpc_id = "vpc-0ba135523d9dfbf3d"

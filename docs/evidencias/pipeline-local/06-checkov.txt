@@ -1,0 +1,7 @@
+$ checkov --config-file .checkov.yaml -o cli -o junitxml --output-file-path console,reports/checkov.xml
+terraform scan results:
+
+Passed checks: 347, Failed checks: 0, Skipped checks: 18
+
+
+[exit 0]

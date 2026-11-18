@@ -1,0 +1,2 @@
+$ shellcheck -S warning scripts/deploy.sh scripts/destroy.sh scripts/smoke_test.sh scripts/simulate_incidents.sh scripts/collect_evidence.sh
+[exit 0]

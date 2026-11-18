@@ -1,0 +1,2 @@
+# 2026-11-16T20:10:33-03:00 · aws logs filter-log-events --log-group-name /bomberos-la3/dev/app/nginx-access --limit 15 --query events[].message --output text
+

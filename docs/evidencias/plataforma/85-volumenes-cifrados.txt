@@ -1,0 +1,9 @@
+# 2026-11-16T20:10:54-03:00 · aws ec2 describe-volumes --filters Name=attachment.instance-id,Values=i-0e9521f3bd1a77cfa --query Volumes[].{Volumen:VolumeId,Cifrado:Encrypted,KMS:KmsKeyId} --output table
+
+--------------------------------------------------------------------------------------------
+|                                      DescribeVolumes                                     |
++---------+--------------------------------------------------------------------------------+
+|  Cifrado|  True                                                                          |
+|  KMS    |  arn:aws:kms:us-east-1:XXXXXXXXXXXX:key/64d1ca62-f3fd-4454-8109-6afbc7474a88   |
+|  Volumen|  vol-068578f8a96e07929                                                         |
++---------+--------------------------------------------------------------------------------+

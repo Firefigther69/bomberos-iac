@@ -1,0 +1,8 @@
+$ python3 scripts/check_traceability.py
+Requerimientos: 29 | Pruebas: 76 | Cubiertos: 29/29
+  Unitaria (terraform test): 24
+  Estática (pytest): 21
+  Integración (pytest + AWS): 23
+  Humo (post-despliegue): 8
+TRAZABILIDAD OK
+[exit 0]

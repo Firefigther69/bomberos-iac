@@ -1,0 +1,86 @@
+# CodeBuild · Etapa de integración continua (no requiere permisos sobre la infraestructura).
+# Corre en cada cambio del repositorio. Cualquier falla detiene el pipeline.
+version: 0.2
+
+env:
+  variables:
+    TFLINT_VERSION: "0.55.1"
+    GITLEAKS_VERSION: "8.21.2"
+    CHECKOV_VERSION: "3.2.334"
+  # TF_VERSION, PROJECT y ENVIRONMENT llegan desde el proyecto CodeBuild (cicd.tf).
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - echo "Instalando Terraform ${TF_VERSION}, TFLint ${TFLINT_VERSION}, Checkov y gitleaks"
+      - curl -sSLo /tmp/tf.zip "https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip"
+      - unzip -oq /tmp/tf.zip -d /usr/local/bin
+      - curl -sSLo /tmp/tflint.zip "https://github.com/terraform-linters/tflint/releases/download/v${TFLINT_VERSION}/tflint_linux_amd64.zip"
+      - unzip -oq /tmp/tflint.zip -d /usr/local/bin
+      - curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" | tar -xz -C /usr/local/bin gitleaks
+      - pip install --quiet "checkov==${CHECKOV_VERSION}" shellcheck-py "pytest>=8.3,<9"
+      - terraform version && tflint --version && checkov --version && gitleaks version
+
+  pre_build:
+    commands:
+      - mkdir -p reports
+      - echo "[1/9] Formato"
+      - terraform fmt -check -recursive -diff
+      - echo "[2/9] Inicialización sin backend y validación de sintaxis"
+      - terraform init -backend=false -input=false
+      - terraform validate
+      - echo "[3/9] Lint (reglas de Terraform y AWS)"
+      - tflint --init
+      - tflint --recursive --format junit > reports/tflint.xml || (cat reports/tflint.xml; exit 1)
+
+  build:
+    commands:
+      - echo "[4/9] Búsqueda de secretos en el historial completo"
+      - gitleaks detect --source . --redact --report-format junit --report-path reports/gitleaks.xml
+      - echo "[5/9] Políticas de seguridad (Checkov + estándares propios en policies/checkov)"
+      - checkov --config-file .checkov.yaml -o cli -o junitxml --output-file-path console,reports/checkov.xml
+      - echo "[6/9] Pruebas unitarias de Terraform (proveedor simulado)"
+      - terraform test -junit-xml=reports/terraform-test.xml
+      - echo "[7/9] Pruebas estáticas del repositorio"
+      - python -m pytest tests/static -v --junitxml=reports/static.xml
+      - echo "[8/9] Trazabilidad requerimiento → prueba (falla si un requerimiento queda sin prueba)"
+      - python scripts/check_traceability.py
+      - echo "[9/9] Análisis estático de scripts"
+      - shellcheck -S warning scripts/*.sh
+
+  post_build:
+    commands:
+      - echo "Validación finalizada con estado ${CODEBUILD_BUILD_SUCCEEDING} (1 = éxito)"
+
+reports:
+  terraform-test:
+    files: ["terraform-test.xml"]
+    base-directory: reports
+    file-format: JUNITXML
+  checkov:
+    files: ["checkov.xml"]
+    base-directory: reports
+    file-format: JUNITXML
+  tflint:
+    files: ["tflint.xml"]
+    base-directory: reports
+    file-format: JUNITXML
+  gitleaks:
+    files: ["gitleaks.xml"]
+    base-directory: reports
+    file-format: JUNITXML
+  static-tests:
+    files: ["static.xml"]
+    base-directory: reports
+    file-format: JUNITXML
+  trazabilidad:
+    files: ["trazabilidad.xml"]
+    base-directory: reports
+    file-format: JUNITXML
+
+artifacts:
+  files:
+    - "reports/**/*"
+  name: validate-$CODEBUILD_BUILD_NUMBER

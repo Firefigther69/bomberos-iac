@@ -1,0 +1,18 @@
+# 2026-11-16T20:10:44-03:00 · aws cloudwatch describe-alarms --alarm-name-prefix bomberos-la3-dev-sec- --query MetricAlarms[].{Alarma:AlarmName,Estado:StateValue,Descripcion:AlarmDescription} --output table
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                                               DescribeAlarms                                                                               |
++-------------------------------------------------+----------------------------------------------------------------------------------------------------------------+---------+
+|                     Alarma                      |                                                  Descripcion                                                   | Estado  |
++-------------------------------------------------+----------------------------------------------------------------------------------------------------------------+---------+
+|  bomberos-la3-dev-sec-cloudtrail-changes        |  RS-06: cambio en la configuración de auditoría. Detener el trail elimina la trazabilidad.                   |  OK     |
+|  bomberos-la3-dev-sec-console-login-failures    |  RS-03: 3 o más fallos de autenticación en consola en 5 minutos. Posible fuerza bruta.                       |  OK     |
+|  bomberos-la3-dev-sec-console-login-without-mfa |  RS-03: inicio de sesión en consola sin MFA.                                                                  |  OK     |
+|  bomberos-la3-dev-sec-iam-policy-changes        |  RS-01: cambio en políticas IAM o creación de llaves de acceso fuera del pipeline.                           |  ALARM  |
+|  bomberos-la3-dev-sec-kms-key-disable-or-delete |  RS-05: deshabilitación o eliminación programada de una CMK. Dejaría datos cifrados inaccesibles.           |  OK     |
+|  bomberos-la3-dev-sec-network-changes           |  RS-04: cambio en rutas, NACL o gateways de la VPC.                                                            |  OK     |
+|  bomberos-la3-dev-sec-root-account-usage        |  RS-03: uso de la cuenta raíz. Debe ser excepcional y justificado.                                            |  OK     |
+|  bomberos-la3-dev-sec-s3-policy-changes         |  RS-05: cambio en políticas, acceso público o cifrado de buckets.                                            |  OK     |
+|  bomberos-la3-dev-sec-security-group-changes    |  RS-04: cambio en grupos de seguridad. Puede abrir puertos no autorizados.                                     |  OK     |
+|  bomberos-la3-dev-sec-unauthorized-api-calls    |  RS-07: 5 o más llamadas API denegadas en 5 minutos. Posible abuso de credenciales o permisos mal asignados.  |  OK     |
++-------------------------------------------------+----------------------------------------------------------------------------------------------------------------+---------+

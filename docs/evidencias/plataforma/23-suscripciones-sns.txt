@@ -1,0 +1,9 @@
+# 2026-11-16T20:10:38-03:00 · aws sns list-subscriptions-by-topic --topic-arn arn:aws:sns:us-east-1:XXXXXXXXXXXX:bomberos-la3-dev-alerts --query Subscriptions[].{Protocolo:Protocol,Destino:Endpoint,Estado:SubscriptionArn} --output table
+
+------------------------------------------------------------------------------------------------------------------
+|                                            ListSubscriptionsByTopic                                            |
++-----------+----------------------------------------------------------------------------------------------------+
+|  Destino  |  g***@gmail.com                                                                                |
+|  Estado   |  arn:aws:sns:us-east-1:XXXXXXXXXXXX:bomberos-la3-dev-alerts:0db42ac1-7ca4-42bd-9dd7-8b3fc60e050f   |
+|  Protocolo|  email                                                                                             |
++-----------+----------------------------------------------------------------------------------------------------+

@@ -1,0 +1,3 @@
+# 2026-11-16T20:10:35-03:00 · aws cloudwatch get-dashboard --dashboard-name bomberos-la3-dev-operaciones --query DashboardName --output text
+
+bomberos-la3-dev-operaciones

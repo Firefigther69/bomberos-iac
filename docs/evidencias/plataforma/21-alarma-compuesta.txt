@@ -1,0 +1,9 @@
+# 2026-11-16T20:10:36-03:00 · aws cloudwatch describe-alarms --alarm-names bomberos-la3-dev-servicio-degradado --alarm-types CompositeAlarm --query CompositeAlarms[].{Alarma:AlarmName,Estado:StateValue,Regla:AlarmRule} --output table
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                                                            DescribeAlarms                                                                                            |
++--------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|  Alarma|  bomberos-la3-dev-servicio-degradado                                                                                                                                                        |
+|  Estado|  OK                                                                                                                                                                                         |
+|  Regla |  ALARM("bomberos-la3-dev-ec2-status-check") OR ALARM("bomberos-la3-dev-app-nginx-detenido") OR ALARM("bomberos-la3-dev-app-errores-5xx") OR ALARM("bomberos-la3-dev-so-agente-sin-datos")   |
++--------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

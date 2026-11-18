@@ -1,0 +1,12 @@
+# 2026-11-16T20:10:32-03:00 · aws cloudwatch list-metrics --namespace BomberosLA3/App --query Metrics[].MetricName --output table
+
+----------------------
+|     ListMetrics    |
++--------------------+
+|  HTTP4xx           |
+|  ResponseTime      |
+|  HTTPRequests      |
+|  HTTP5xx           |
+|  NginxErrors       |
+|  HostSudoCommands  |
++--------------------+

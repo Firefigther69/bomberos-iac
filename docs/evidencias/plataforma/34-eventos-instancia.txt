@@ -1,0 +1,12 @@
+# 2026-11-16T20:10:43-03:00 · aws cloudtrail lookup-events --lookup-attributes AttributeKey=ResourceName,AttributeValue=i-0e9521f3bd1a77cfa --max-results 15 --query Events[].{Hora:EventTime,Evento:EventName,Usuario:Username} --output table
+
+--------------------------------------------------------------------------------------
+|                                    LookupEvents                                    |
++------------------+---------------+-------------------------------------------------+
+|      Evento      |     Hora      |                     Usuario                     |
++------------------+---------------+-------------------------------------------------+
+|  MonitorInstances|  1794869647.0 |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva   |
+|  AssumeRole      |  1794869638.0 |  None                                           |
+|  AssumeRole      |  1794869638.0 |  None                                           |
+|  RunInstances    |  1794869637.0 |  user3481123=Gino_Miqueli_Paoli_Cort__s_Leiva   |
++------------------+---------------+-------------------------------------------------+

@@ -1,0 +1,103 @@
+#!/bin/bash
+# Arranque del servidor de aplicación (Amazon Linux 2023).
+# Plantilla renderizada por Terraform (templatefile). Las variables ${region},
+# ${ssm_prefix}, ${cw_agent_param_name} y ${environment} se inyectan al desplegar.
+set -euo pipefail
+exec > >(tee -a /var/log/bootstrap.log) 2>&1
+echo "[bootstrap] inicio $(date -Is)"
+
+# 1. Paquetes base y parches de seguridad
+dnf -y update --security
+dnf -y install nginx amazon-cloudwatch-agent rsyslog dnf-automatic jq
+
+# 2. Actualizaciones de seguridad automáticas (control de vulnerabilidades continuo)
+sed -i 's/^upgrade_type.*/upgrade_type = security/; s/^apply_updates.*/apply_updates = yes/' /etc/dnf/automatic.conf
+systemctl enable --now dnf-automatic.timer
+
+# 3. rsyslog: AL2023 usa solo journald; se habilita para exportar /var/log/messages y /var/log/secure
+systemctl enable --now rsyslog
+
+# 4. Secreto de la aplicación: se obtiene con el rol de la instancia, sin credenciales en disco del AMI
+install -d -m 0750 -o root -g nginx /etc/bomberos
+APP_SECRET="$(aws ssm get-parameter --region ${region} --name '${ssm_prefix}/app/session-secret' \
+  --with-decryption --query 'Parameter.Value' --output text)"
+umask 077
+printf 'APP_ENV=%s\nSESSION_SECRET=%s\n' '${environment}' "$APP_SECRET" > /etc/bomberos/app.env
+chown root:nginx /etc/bomberos/app.env
+chmod 0640 /etc/bomberos/app.env
+unset APP_SECRET
+umask 022
+
+# 5. Contenido web
+install -d -m 0755 /usr/share/nginx/html/bomberos
+echo '${app_index_b64}' | base64 -d > /usr/share/nginx/html/bomberos/index.html
+
+# 6. nginx endurecido con log JSON (habilita filtros de métricas por campo).
+#    nginx.conf se reemplaza por una versión mínima sin el servidor de ejemplo del paquete.
+cat > /etc/nginx/nginx.conf <<'NGINX'
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log warn;
+pid /run/nginx.pid;
+include /usr/share/nginx/modules/*.conf;
+
+events { worker_connections 1024; }
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    sendfile on;
+    keepalive_timeout 30;
+    include /etc/nginx/conf.d/*.conf;
+}
+NGINX
+
+cat > /etc/nginx/conf.d/bomberos.conf <<'NGINX'
+log_format json_combined escape=json
+  '{"time":"$time_iso8601","remote_addr":"$remote_addr","method":"$request_method",'
+  '"uri":"$uri","status":$status,"bytes":$body_bytes_sent,'
+  '"request_time":$request_time,"user_agent":"$http_user_agent","request_id":"$request_id"}';
+
+server_tokens off;
+
+server {
+    listen 80 default_server;
+    server_name _;
+    root /usr/share/nginx/html/bomberos;
+    index index.html;
+
+    access_log /var/log/nginx/access.json json_combined;
+    error_log  /var/log/nginx/error.log warn;
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:" always;
+    add_header Permissions-Policy "geolocation=(), camera=(), microphone=()" always;
+    add_header X-Request-Id $request_id always;
+
+    client_max_body_size 1m;
+
+    location = /health {
+        access_log off;
+        default_type application/json;
+        return 200 '{"status":"ok","service":"bomberos-la3","env":"${environment}"}';
+    }
+
+    location ~ /\. { deny all; return 404; }
+
+    location / {
+        limit_except GET HEAD { deny all; }
+        try_files $uri $uri/ =404;
+    }
+}
+NGINX
+nginx -t
+systemctl enable --now nginx
+
+# 7. Agente CloudWatch con configuración centralizada en Parameter Store
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a fetch-config -m ec2 -s -c "ssm:${cw_agent_param_name}"
+systemctl enable amazon-cloudwatch-agent
+
+echo "[bootstrap] fin $(date -Is)"

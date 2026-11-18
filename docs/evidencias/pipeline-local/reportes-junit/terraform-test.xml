@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuites>
+  <testsuite name="tests/monitoring.tftest.hcl" tests="6" skipped="0" failures="0" errors="0">
+    <testcase name="rf04_logs_centralizados_y_cifrados" classname="tests/monitoring.tftest.hcl" time="2.579839391" timestamp="2026-11-16T23:24:14Z"></testcase>
+    <testcase name="rf03_metricas_del_sistema_operativo" classname="tests/monitoring.tftest.hcl" time="0.902461055" timestamp="2026-11-16T23:24:17Z"></testcase>
+    <testcase name="rf03_alarmas_de_deteccion_temprana" classname="tests/monitoring.tftest.hcl" time="0.817841188" timestamp="2026-11-16T23:24:18Z"></testcase>
+    <testcase name="rf05_alarmas_notifican_por_sns" classname="tests/monitoring.tftest.hcl" time="1.108435916" timestamp="2026-11-16T23:24:18Z"></testcase>
+    <testcase name="rf05_auditoria_cloudtrail" classname="tests/monitoring.tftest.hcl" time="0.832435653" timestamp="2026-11-16T23:24:19Z"></testcase>
+    <testcase name="rf06_rs09_pipeline_registrado_y_cifrado" classname="tests/monitoring.tftest.hcl" time="1.0777538660000001" timestamp="2026-11-16T23:24:20Z"></testcase>
+  </testsuite>
+  <testsuite name="tests/requirements.tftest.hcl" tests="6" skipped="0" failures="0" errors="0">
+    <testcase name="rf07_administracion_sin_ssh" classname="tests/requirements.tftest.hcl" time="1.35395894" timestamp="2026-11-16T23:24:23Z"></testcase>
+    <testcase name="rnf03_alarma_de_latencia_p90" classname="tests/requirements.tftest.hcl" time="0.860649707" timestamp="2026-11-16T23:24:24Z"></testcase>
+    <testcase name="rnf04_control_de_costos" classname="tests/requirements.tftest.hcl" time="0.846555774" timestamp="2026-11-16T23:24:25Z"></testcase>
+    <testcase name="rt04_servidor_al2023_con_agentes" classname="tests/requirements.tftest.hcl" time="0.8365762" timestamp="2026-11-16T23:24:26Z"></testcase>
+    <testcase name="rt06_region_por_defecto" classname="tests/requirements.tftest.hcl" time="0.805034844" timestamp="2026-11-16T23:24:26Z"></testcase>
+    <testcase name="rf06_webhook_ejecuta_validate_en_cada_cambio" classname="tests/requirements.tftest.hcl" time="0.941955938" timestamp="2026-11-16T23:24:27Z"></testcase>
+  </testsuite>
+  <testsuite name="tests/security.tftest.hcl" tests="5" skipped="0" failures="0" errors="0">
+    <testcase name="rs02_instancia_endurecida" classname="tests/security.tftest.hcl" time="1.520324992" timestamp="2026-11-16T23:24:29Z"></testcase>
+    <testcase name="rs04_red_restringida" classname="tests/security.tftest.hcl" time="0.89771424" timestamp="2026-11-16T23:24:31Z"></testcase>
+    <testcase name="rs05_cifrado_y_buckets" classname="tests/security.tftest.hcl" time="0.823352853" timestamp="2026-11-16T23:24:32Z"></testcase>
+    <testcase name="rs01_minimo_privilegio_cuenta_propia" classname="tests/security.tftest.hcl" time="0.905950305" timestamp="2026-11-16T23:24:33Z"></testcase>
+    <testcase name="rnf07_modo_learner_lab" classname="tests/security.tftest.hcl" time="0.815537163" timestamp="2026-11-16T23:24:34Z"></testcase>
+  </testsuite>
+  <testsuite name="tests/setup.tftest.hcl" tests="1" skipped="0" failures="0" errors="0">
+    <testcase name="rf02_rt01_plan_base_sin_errores" classname="tests/setup.tftest.hcl" time="0.806825291" timestamp="2026-11-16T23:24:35Z"></testcase>
+  </testsuite>
+  <testsuite name="tests/variables.tftest.hcl" tests="6" skipped="0" failures="0" errors="0">
+    <testcase name="rt03_rechaza_ambiente_invalido" classname="tests/variables.tftest.hcl" time="0.857960972" timestamp="2026-11-16T23:24:36Z"></testcase>
+    <testcase name="rt03_rechaza_correo_invalido" classname="tests/variables.tftest.hcl" time="0.824073318" timestamp="2026-11-16T23:24:37Z"></testcase>
+    <testcase name="rt03_rs04_rechaza_cidr_invalido" classname="tests/variables.tftest.hcl" time="0.76965478" timestamp="2026-11-16T23:24:38Z"></testcase>
+    <testcase name="rt03_rnf04_rechaza_instancia_costosa" classname="tests/variables.tftest.hcl" time="0.828628128" timestamp="2026-11-16T23:24:39Z"></testcase>
+    <testcase name="rt03_rnf05_rechaza_retencion_no_soportada" classname="tests/variables.tftest.hcl" time="0.647183776" timestamp="2026-11-16T23:24:40Z"></testcase>
+    <testcase name="rt03_rs09_rechaza_repositorio_no_https" classname="tests/variables.tftest.hcl" time="0.823168809" timestamp="2026-11-16T23:24:40Z"></testcase>
+  </testsuite>
+</testsuites>

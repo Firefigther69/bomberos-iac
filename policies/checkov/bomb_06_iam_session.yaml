@@ -1,0 +1,11 @@
+metadata:
+  id: "CKV2_BOMB_6"
+  name: "Estándar RS-01: los roles IAM deben limitar la duración de sesión a 1 hora"
+  category: "IAM"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_iam_role"
+  attribute: "max_session_duration"
+  operator: "less_than_or_equal"
+  value: 3600

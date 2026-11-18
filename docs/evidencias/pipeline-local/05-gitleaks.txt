@@ -1,0 +1,12 @@
+$ gitleaks detect --source . --redact --no-color --report-format junit --report-path reports/gitleaks.xml
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+8:24PM INF 1 commits scanned.
+8:24PM INF scan completed in 114ms
+8:24PM INF no leaks found
+[exit 0]

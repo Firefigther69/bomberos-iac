@@ -1,0 +1,69 @@
+digraph G {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=11, bgcolor="white", pad=0.3, nodesep=0.35, ranksep=0.55, compound=true, label="Arquitectura · bomberos-la3 (us-east-1)", labelloc=t, fontsize=16];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, fillcolor="#ffffff", color="#5f6368", penwidth=1.1];
+  edge  [fontname="Helvetica", fontsize=8.5, color="#5f6368", arrowsize=0.7];
+
+  usuarios [label="Voluntarios\n3ra Compañía\n(navegador)", shape=ellipse, fillcolor="#fde8e8", color="#b3121b"];
+  equipo   [label="Equipo DevOps\n(Git + PR)", shape=ellipse, fillcolor="#e8f0fe", color="#1a73e8"];
+  github   [label="Repositorio GitHub\nGitHub Actions (CI)", fillcolor="#f1f3f4"];
+
+  subgraph cluster_aws {
+    label="Cuenta AWS"; style="rounded"; color="#ff9900"; fontcolor="#c45500"; penwidth=1.5;
+
+    subgraph cluster_vpc {
+      label="VPC 10.20.0.0/16 · Flow Logs"; style="rounded,dashed"; color="#7aa116"; fontcolor="#4d6b0a";
+      igw [label="Internet\nGateway", fillcolor="#f3f8e8"];
+      subgraph cluster_sn {
+        label="Subred pública AZ-a (10.20.1.0/24)\n+ subred AZ-b (10.20.2.0/24)"; style="rounded"; color="#9ccc65"; fontcolor="#4d6b0a";
+        sg  [label="Security Group\nIN: 80 · OUT: 443\nsin 22", fillcolor="#fff4e5", color="#e8710a"];
+        ec2 [label="EC2 t3.micro · AL2023\nnginx · IMDSv2 · EBS cifrado\nAgente CloudWatch + SSM", fillcolor="#fff8e1", color="#ff9900", penwidth=1.6];
+      }
+    }
+
+    subgraph cluster_obs {
+      label="Observabilidad"; style="rounded"; color="#e7157b"; fontcolor="#a50e5a";
+      cwl  [label="CloudWatch Logs\nnginx · SO · VPC · trail · CI", fillcolor="#fde7f3"];
+      cwm  [label="Métricas\nAWS/EC2 · BomberosLA3/*", fillcolor="#fde7f3"];
+      alarms [label="26 alarmas\n+ compuesta + anomalías", fillcolor="#fde7f3"];
+      dash [label="Dashboard\noperaciones", fillcolor="#fde7f3"];
+      sns  [label="SNS cifrado\nalertas → correo", fillcolor="#fde7f3"];
+      eb   [label="EventBridge\neventos críticos", fillcolor="#fde7f3"];
+    }
+
+    subgraph cluster_sec {
+      label="Seguridad y auditoría"; style="rounded"; color="#dd344c"; fontcolor="#a1192b";
+      trail [label="CloudTrail\nmulti-región · validación", fillcolor="#fce8ea"];
+      kms   [label="KMS CMK\nrotación anual", fillcolor="#fce8ea"];
+      iam   [label="IAM\nroles de mínimo privilegio", fillcolor="#fce8ea"];
+      ssm   [label="Parameter Store\nSecureString · config agente", fillcolor="#fce8ea"];
+      s3    [label="S3 endurecido\nauditoría · artefactos · accesos", fillcolor="#fce8ea"];
+    }
+
+    subgraph cluster_ci {
+      label="Pipeline"; style="rounded"; color="#1a73e8"; fontcolor="#174ea6";
+      cbv [label="CodeBuild validate\nfmt · tflint · checkov\ngitleaks · terraform test", fillcolor="#e8f0fe"];
+      cbi [label="CodeBuild integration\nsmoke + pytest (solo lectura)", fillcolor="#e8f0fe"];
+      sched [label="Programación diaria\n(deriva)", fillcolor="#e8f0fe"];
+    }
+  }
+
+  usuarios -> igw [label="HTTP 80"];
+  igw -> sg -> ec2;
+  equipo -> github [label="push / PR"];
+  github -> cbv [label="build"];
+  sched -> cbi;
+  cbi -> ec2 [label="pruebas", style=dashed];
+  ec2 -> cwl [label="logs"];
+  ec2 -> cwm [label="métricas"];
+  cwl -> cwm [label="filtros"];
+  cwm -> alarms -> sns;
+  alarms -> dash [style=dotted, arrowhead=none];
+  trail -> s3;
+  trail -> cwl [label="eventos API"];
+  trail -> eb -> sns;
+  cbv -> s3 [label="reportes"];
+  cbv -> cwl [style=dashed];
+  ssm -> ec2 [label="secreto vía rol", style=dashed];
+  iam -> ec2 [label="perfil", style=dashed];
+  kms -> s3 [style=dotted, arrowhead=none, label="cifra"];
+}

@@ -1,0 +1,15 @@
+# 2026-11-16T20:10:40-03:00 · aws cloudtrail get-trail-status --name bomberos-la3-dev-trail --output json
+
+{
+    "IsLogging": true,
+    "LatestDeliveryTime": 1794870612.925,
+    "StartLoggingTime": 1794869868.418,
+    "LatestCloudWatchLogsDeliveryTime": 1794870634.67,
+    "LatestDigestDeliveryTime": 1794869925.897,
+    "LatestDeliveryAttemptTime": "2026-11-16T23:10:12Z",
+    "LatestNotificationAttemptTime": "",
+    "LatestNotificationAttemptSucceeded": "",
+    "LatestDeliveryAttemptSucceeded": "2026-11-16T23:10:12Z",
+    "TimeLoggingStarted": "2026-11-16T22:57:48Z",
+    "TimeLoggingStopped": ""
+}

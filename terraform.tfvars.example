@@ -1,0 +1,26 @@
+# Copiar a terraform.tfvars y ajustar. terraform.tfvars está excluido del repositorio (.gitignore).
+# Este archivo NO debe contener credenciales: Terraform toma las credenciales de AWS
+# desde el entorno (aws configure / variables AWS_* / perfil SSO / rol de CodeBuild).
+
+project_name = "bomberos-la3"
+environment  = "dev"
+aws_region   = "us-east-1"
+owner        = "gino.cortes"
+
+# true en AWS Academy Learner Lab (usa LabRole / LabInstanceProfile).
+use_lab_role = false
+
+# Restringir a la IP pública de la compañía o del equipo cuando sea posible, ej. ["200.27.10.15/32"].
+allowed_http_cidrs = ["0.0.0.0/0"]
+
+instance_type    = "t3.micro"
+root_volume_size = 10
+
+alarm_email        = "alertas.bomberos@example.com"
+log_retention_days = 365
+
+# Ambiente académico efímero: permite `terraform destroy` con buckets que contienen registros.
+force_destroy_buckets = true
+
+repository_url    = "https://github.com/Firefigther69/bomberos-iac.git"
+repository_branch = "main"

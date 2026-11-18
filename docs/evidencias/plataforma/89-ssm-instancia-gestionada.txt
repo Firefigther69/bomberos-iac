@@ -1,0 +1,9 @@
+# 2026-11-16T20:10:59-03:00 · aws ssm describe-instance-information --filters Key=InstanceIds,Values=i-0e9521f3bd1a77cfa --query InstanceInformationList[].{Instancia:InstanceId,Ping:PingStatus,Agente:AgentVersion} --output table
+
+-------------------------------------------------
+|          DescribeInstanceInformation          |
++-------------+-----------------------+---------+
+|   Agente    |       Instancia       |  Ping   |
++-------------+-----------------------+---------+
+|  3.3.5828.0 |  i-0e9521f3bd1a77cfa  |  Online |
++-------------+-----------------------+---------+

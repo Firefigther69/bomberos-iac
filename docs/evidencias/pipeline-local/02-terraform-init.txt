@@ -1,0 +1,15 @@
+$ terraform init -backend=false -input=false -no-color
+Initializing modules...
+- access_logs_bucket in modules/secure_bucket
+- artifacts_bucket in modules/secure_bucket
+- trail_bucket in modules/secure_bucket
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Reusing previous version of hashicorp/random from the dependency lock file
+- Installing hashicorp/aws v5.100.0...
+- Installed hashicorp/aws v5.100.0 (signed by HashiCorp)
+- Installing hashicorp/random v3.9.1...
+- Installed hashicorp/random v3.9.1 (signed by HashiCorp)
+
+Terraform has been successfully initialized!
+[exit 0]

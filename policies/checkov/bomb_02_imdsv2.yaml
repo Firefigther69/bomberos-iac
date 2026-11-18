@@ -1,0 +1,11 @@
+metadata:
+  id: "CKV2_BOMB_2"
+  name: "Estándar RS-02: las instancias EC2 deben exigir IMDSv2"
+  category: "GENERAL_SECURITY"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_instance"
+  attribute: "metadata_options.http_tokens"
+  operator: "equals"
+  value: "required"

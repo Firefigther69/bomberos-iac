@@ -1,0 +1,15 @@
+# Estado remoto de Terraform (configuración parcial).
+# Uso: cp backend.hcl.example backend.hcl && terraform init -backend-config=backend.hcl
+#
+# Requisitos del bucket de estado (crear una vez, fuera de este proyecto):
+#   - Versionado habilitado (permite recuperar estados anteriores).
+#   - Cifrado SSE-KMS y bloqueo de acceso público.
+#   - Acceso restringido al rol de despliegue: el estado contiene el secreto generado de la aplicación.
+#
+# Además, agregar en versions.tf dentro del bloque terraform:  backend "s3" {}
+
+bucket       = "bomberos-la3-tfstate-<ACCOUNT_ID>"
+key          = "bomberos-la3/dev/terraform.tfstate"
+region       = "us-east-1"
+encrypt      = true
+use_lockfile = true # Bloqueo nativo en S3 (Terraform >= 1.10), sin tabla DynamoDB.

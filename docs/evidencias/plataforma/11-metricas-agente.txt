@@ -1,0 +1,32 @@
+# 2026-11-16T20:10:32-03:00 · aws cloudwatch list-metrics --namespace BomberosLA3/EC2 --dimensions Name=InstanceId,Value=i-0e9521f3bd1a77cfa --query Metrics[].MetricName --output table
+
+-------------------------------
+|         ListMetrics         |
++-----------------------------+
+|  procstat_lookup_pid_count  |
+|  swap_used_percent          |
+|  mem_available_percent      |
+|  disk_used_percent          |
+|  netstat_tcp_established    |
+|  disk_inodes_free           |
+|  netstat_tcp_time_wait      |
+|  procstat_memory_rss        |
+|  mem_used_percent           |
+|  diskio_io_time             |
+|  diskio_read_bytes          |
+|  diskio_io_time             |
+|  cpu_usage_user             |
+|  diskio_write_bytes         |
+|  cpu_usage_iowait           |
+|  diskio_write_bytes         |
+|  diskio_io_time             |
+|  diskio_write_bytes         |
+|  cpu_usage_system           |
+|  procstat_cpu_usage         |
+|  cpu_usage_steal            |
+|  diskio_io_time             |
+|  diskio_read_bytes          |
+|  diskio_read_bytes          |
+|  diskio_write_bytes         |
+|  diskio_read_bytes          |
++-----------------------------+

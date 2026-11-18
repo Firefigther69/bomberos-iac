@@ -1,0 +1,32 @@
+$ python3 -m pytest tests/static -v -p no:cacheprovider --junitxml=reports/static.xml
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: .
+plugins: platformdirs-4.13.5, anyio-4.15.1
+collecting ... collected 21 items
+
+tests/static/test_repositorio.py::test_rt02_version_de_terraform_acotada PASSED [  4%]
+tests/static/test_repositorio.py::test_rt02_proveedores_con_restriccion_de_version PASSED [  9%]
+tests/static/test_repositorio.py::test_rt02_lock_file_versionado_multiplataforma PASSED [ 14%]
+tests/static/test_repositorio.py::test_rt05_backend_cifrado_con_bloqueo PASSED [ 19%]
+tests/static/test_repositorio.py::test_rt05_estado_y_backend_excluidos_del_repositorio PASSED [ 23%]
+tests/static/test_repositorio.py::test_rs06_archivos_sensibles_ignorados PASSED [ 28%]
+tests/static/test_repositorio.py::test_rs06_sin_llaves_de_acceso_ni_privadas_en_el_codigo PASSED [ 33%]
+tests/static/test_repositorio.py::test_rs06_secreto_de_aplicacion_como_securestring_con_cmk PASSED [ 38%]
+tests/static/test_repositorio.py::test_rs06_ejemplo_de_variables_sin_credenciales PASSED [ 42%]
+tests/static/test_repositorio.py::test_rs06_outputs_no_exponen_el_secreto PASSED [ 47%]
+tests/static/test_repositorio.py::test_rnf06_variables_tipadas_y_documentadas PASSED [ 52%]
+tests/static/test_repositorio.py::test_rnf06_outputs_documentados PASSED [ 57%]
+tests/static/test_repositorio.py::test_rnf06_alarmas_citan_requerimiento PASSED [ 61%]
+tests/static/test_repositorio.py::test_rt04_user_data_instala_agentes_y_parches PASSED [ 66%]
+tests/static/test_repositorio.py::test_rs06_rs08_user_data_protege_el_secreto_y_endurece_nginx PASSED [ 71%]
+tests/static/test_repositorio.py::test_rs09_pipeline_ejecuta_controles_bloqueantes PASSED [ 76%]
+tests/static/test_repositorio.py::test_rf06_reportes_junit_publicados PASSED [ 80%]
+tests/static/test_repositorio.py::test_rs09_github_actions_permisos_minimos PASSED [ 85%]
+tests/static/test_repositorio.py::test_rs09_politicas_propias_de_checkov PASSED [ 90%]
+tests/static/test_repositorio.py::test_rf02_todo_archivo_tf_tiene_formato_canonico PASSED [ 95%]
+tests/static/test_repositorio.py::test_rf02_mock_cubre_datos_de_cuenta PASSED [100%]
+
+- generated xml file: ./reports/static.xml -
+============================== 21 passed in 0.16s ==============================
+[exit 0]

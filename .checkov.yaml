@@ -1,0 +1,15 @@
+# Configuración de Checkov para el proyecto.
+# Las excepciones se declaran en línea junto al recurso (#checkov:skip=ID:justificación)
+# para que cada una quede revisada en el mismo commit que el código.
+framework:
+  - terraform
+directory:
+  - .
+external-checks-dir:
+  - policies/checkov
+skip-path:
+  - tests
+  - .terraform
+compact: true
+quiet: true
+download-external-modules: false

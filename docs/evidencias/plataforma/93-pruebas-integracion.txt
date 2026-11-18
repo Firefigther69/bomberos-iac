@@ -1,0 +1,48 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: .
+plugins: platformdirs-4.13.5, anyio-4.15.1
+collecting ... collected 25 items
+
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rf01_health_responde_200 PASSED [  4%]
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rf01_portada_disponible PASSED [  8%]
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rs08_cabeceras_de_seguridad PASSED [ 12%]
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rs04_puerto_ssh_cerrado PASSED [ 16%]
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs02_imdsv2_obligatorio PASSED [ 20%]
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs04_sin_llave_ssh PASSED [ 24%]
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs05_volumenes_cifrados PASSED [ 28%]
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs01_rol_asociado PASSED [ 32%]
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs04_reglas_de_entrada_minimas PASSED [ 36%]
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs04_salida_solo_https PASSED [ 40%]
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rf04_flow_logs_activos PASSED [ 44%]
+tests/integration/test_infraestructura.py::TestAuditoria::test_rf05_trail_registrando PASSED [ 48%]
+tests/integration/test_infraestructura.py::TestAuditoria::test_rf05_trail_multiregion_con_validacion PASSED [ 52%]
+tests/integration/test_infraestructura.py::TestAuditoria::test_rf05_entrega_reciente PASSED [ 56%]
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_alarmas_creadas_con_notificacion PASSED [ 60%]
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_servicio_no_degradado PASSED [ 64%]
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_metricas_del_agente_publicadas PASSED [ 68%]
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_dashboard_existe PASSED [ 72%]
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf04_grupos_de_logs_cifrados_con_retencion PASSED [ 76%]
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf04_filtros_de_metricas_de_seguridad PASSED [ 80%]
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf05_topico_cifrado PASSED [ 84%]
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_bucket_endurecido[trail_bucket] PASSED [ 88%]
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_bucket_endurecido[artifacts_bucket] PASSED [ 92%]
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_bucket_endurecido[access_logs_bucket] PASSED [ 96%]
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_rotacion_de_cmk PASSED [100%]
+
+=============================== warnings summary ===============================
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs02_imdsv2_obligatorio
+  /usr/local/lib/python3.13/site-packages/_pytest/fixtures.py:1313: PytestRemovedIn10Warning: Class-scoped fixture defined as instance method is deprecated.
+  Instance attributes set in this fixture will NOT be visible to test methods,
+  as each test gets a new instance while the fixture runs only once per class.
+  Use @classmethod decorator and set attributes on cls instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#class-scoped-fixture-as-instance-method
+    fixturefunc = resolve_fixture_function(fixturedef, request)
+
+tests/integration/test_infraestructura.py: 28 warnings
+  /usr/local/lib/python3.13/site-packages/botocore/auth.py:424: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    datetime_now = datetime.datetime.utcnow()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+------- generated xml file: ./reports/integration.xml --------
+======================= 25 passed, 29 warnings in 5.36s ========================

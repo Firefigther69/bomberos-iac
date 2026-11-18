@@ -1,0 +1,9 @@
+# 2026-11-16T20:10:39-03:00 · aws events list-rules --name-prefix bomberos-la3-dev --query Rules[].{Regla:Name,Estado:State,Programacion:ScheduleExpression} --output table
+
+------------------------------------------------------------------
+|                            ListRules                           |
++---------+---------------+--------------------------------------+
+| Estado  | Programacion  |                Regla                 |
++---------+---------------+--------------------------------------+
+|  ENABLED|  None         |  bomberos-la3-dev-cambios-criticos   |
++---------+---------------+--------------------------------------+

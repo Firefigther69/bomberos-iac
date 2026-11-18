@@ -1,0 +1,43 @@
+$ terraform test -no-color -junit-xml=reports/terraform-test.xml
+tests/monitoring.tftest.hcl... in progress
+  run "rf04_logs_centralizados_y_cifrados"... pass
+  run "rf03_metricas_del_sistema_operativo"... pass
+  run "rf03_alarmas_de_deteccion_temprana"... pass
+  run "rf05_alarmas_notifican_por_sns"... pass
+  run "rf05_auditoria_cloudtrail"... pass
+  run "rf06_rs09_pipeline_registrado_y_cifrado"... pass
+tests/monitoring.tftest.hcl... tearing down
+tests/monitoring.tftest.hcl... pass
+tests/requirements.tftest.hcl... in progress
+  run "rf07_administracion_sin_ssh"... pass
+  run "rnf03_alarma_de_latencia_p90"... pass
+  run "rnf04_control_de_costos"... pass
+  run "rt04_servidor_al2023_con_agentes"... pass
+  run "rt06_region_por_defecto"... pass
+  run "rf06_webhook_ejecuta_validate_en_cada_cambio"... pass
+tests/requirements.tftest.hcl... tearing down
+tests/requirements.tftest.hcl... pass
+tests/security.tftest.hcl... in progress
+  run "rs02_instancia_endurecida"... pass
+  run "rs04_red_restringida"... pass
+  run "rs05_cifrado_y_buckets"... pass
+  run "rs01_minimo_privilegio_cuenta_propia"... pass
+  run "rnf07_modo_learner_lab"... pass
+tests/security.tftest.hcl... tearing down
+tests/security.tftest.hcl... pass
+tests/setup.tftest.hcl... in progress
+  run "rf02_rt01_plan_base_sin_errores"... pass
+tests/setup.tftest.hcl... tearing down
+tests/setup.tftest.hcl... pass
+tests/variables.tftest.hcl... in progress
+  run "rt03_rechaza_ambiente_invalido"... pass
+  run "rt03_rechaza_correo_invalido"... pass
+  run "rt03_rs04_rechaza_cidr_invalido"... pass
+  run "rt03_rnf04_rechaza_instancia_costosa"... pass
+  run "rt03_rnf05_rechaza_retencion_no_soportada"... pass
+  run "rt03_rs09_rechaza_repositorio_no_https"... pass
+tests/variables.tftest.hcl... tearing down
+tests/variables.tftest.hcl... pass
+
+Success! 24 passed, 0 failed.
+[exit 0]

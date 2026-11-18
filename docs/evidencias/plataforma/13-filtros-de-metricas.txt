@@ -1,0 +1,12 @@
+# 2026-11-16T20:10:33-03:00 · aws logs describe-metric-filters --log-group-name /bomberos-la3/dev/app/nginx-access --query metricFilters[].{Filtro:filterName,Patron:filterPattern,Metrica:metricTransformations[0].metricName} --output table
+
+---------------------------------------------------------------------------------------------
+|                                   DescribeMetricFilters                                   |
++---------------------------------+---------------+-----------------------------------------+
+|             Filtro              |    Metrica    |                 Patron                  |
++---------------------------------+---------------+-----------------------------------------+
+|  bomberos-la3-dev-http_4xx      |  HTTP4xx      |  { $.status >= 400 && $.status < 500 }  |
+|  bomberos-la3-dev-http_5xx      |  HTTP5xx      |  { $.status >= 500 }                    |
+|  bomberos-la3-dev-http_requests |  HTTPRequests |  { $.status > 0 }                       |
+|  bomberos-la3-dev-response_time |  ResponseTime |  { $.request_time >= 0 }                |
++---------------------------------+---------------+-----------------------------------------+

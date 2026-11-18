@@ -1,0 +1,10 @@
+# 2026-11-16T20:10:37-03:00 · aws cloudwatch describe-alarm-history --alarm-name bomberos-la3-dev-app-nginx-detenido --history-item-type StateUpdate --max-records 10 --query AlarmHistoryItems[].[Timestamp,HistorySummary] --output table
+
+---------------------------------------------------------------------
+|                       DescribeAlarmHistory                        |
++-----------------+-------------------------------------------------+
+|  1794870594.066 |  Alarm updated from ALARM to OK                 |
+|  1794870414.065 |  Alarm updated from OK to ALARM                 |
+|  1794869814.067 |  Alarm updated from ALARM to OK                 |
+|  1794869694.066 |  Alarm updated from INSUFFICIENT_DATA to ALARM  |
++-----------------+-------------------------------------------------+

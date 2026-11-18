@@ -1,0 +1,11 @@
+# 2026-11-16T20:10:53-03:00 · aws ec2 describe-instances --instance-ids i-0e9521f3bd1a77cfa --query Reservations[0].Instances[0].{IMDS:MetadataOptions.HttpTokens,HopLimit:MetadataOptions.HttpPutResponseHopLimit,LlaveSSH:KeyName,Perfil:IamInstanceProfile.Arn,Monitoreo:Monitoring.State} --output table
+
+--------------------------------------------------------------------------------
+|                               DescribeInstances                              |
++-----------+------------------------------------------------------------------+
+|  HopLimit |  1                                                               |
+|  IMDS     |  required                                                        |
+|  LlaveSSH |  None                                                            |
+|  Monitoreo|  enabled                                                         |
+|  Perfil   |  arn:aws:iam::XXXXXXXXXXXX:instance-profile/LabInstanceProfile   |
++-----------+------------------------------------------------------------------+

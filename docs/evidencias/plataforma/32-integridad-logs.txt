@@ -1,0 +1,8 @@
+# 2026-11-16T20:10:41-03:00 · aws cloudtrail validate-logs --trail-arn arn:aws:cloudtrail:us-east-1:XXXXXXXXXXXX:trail/bomberos-la3-dev-trail --start-time 2026-11-16T17:10:41Z
+
+Validating log files for trail arn:aws:cloudtrail:us-east-1:XXXXXXXXXXXX:trail/bomberos-la3-dev-trail between 2026-11-16T17:10:41Z and 2026-11-16T23:10:41Z
+
+Results requested for 2026-11-16T17:10:41Z to 2026-11-16T23:10:41Z
+Results found for 2026-11-16T21:57:48Z to 2026-11-16T22:57:48Z:
+
+1/1 digest files valid

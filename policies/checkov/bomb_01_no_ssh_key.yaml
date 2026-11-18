@@ -1,0 +1,10 @@
+metadata:
+  id: "CKV2_BOMB_1"
+  name: "Estándar RS-04: las instancias EC2 no deben usar llaves SSH (acceso solo por Session Manager)"
+  category: "NETWORKING"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_instance"
+  attribute: "key_name"
+  operator: "not_exists"

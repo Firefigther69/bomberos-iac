@@ -1,0 +1,21 @@
+# 2026-11-16T20:10:40-03:00 · aws cloudtrail describe-trails --trail-name-list bomberos-la3-dev-trail --output json
+
+{
+    "trailList": [
+        {
+            "Name": "bomberos-la3-dev-trail",
+            "S3BucketName": "bomberos-la3-dev-cloudtrail-XXXXXXXXXXXX",
+            "IncludeGlobalServiceEvents": true,
+            "IsMultiRegionTrail": true,
+            "HomeRegion": "us-east-1",
+            "TrailARN": "arn:aws:cloudtrail:us-east-1:XXXXXXXXXXXX:trail/bomberos-la3-dev-trail",
+            "LogFileValidationEnabled": true,
+            "CloudWatchLogsLogGroupArn": "arn:aws:logs:us-east-1:XXXXXXXXXXXX:log-group:/bomberos-la3/dev/audit/cloudtrail:*",
+            "CloudWatchLogsRoleArn": "arn:aws:iam::XXXXXXXXXXXX:role/LabRole",
+            "KmsKeyId": "arn:aws:kms:us-east-1:XXXXXXXXXXXX:key/64d1ca62-f3fd-4454-8109-6afbc7474a88",
+            "HasCustomEventSelectors": true,
+            "HasInsightSelectors": false,
+            "IsOrganizationTrail": false
+        }
+    ]
+}

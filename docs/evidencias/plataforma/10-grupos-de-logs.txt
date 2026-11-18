@@ -1,0 +1,16 @@
+# 2026-11-16T20:10:31-03:00 · aws logs describe-log-groups --log-group-name-prefix /bomberos-la3/dev --query logGroups[].{Grupo:logGroupName,RetencionDias:retentionInDays,KMS:kmsKeyId!=null,Bytes:storedBytes} --output table
+
+---------------------------------------------------------------------------------
+|                               DescribeLogGroups                               |
++-------+---------------------------------------------+-------+-----------------+
+| Bytes |                    Grupo                    |  KMS  |  RetencionDias  |
++-------+---------------------------------------------+-------+-----------------+
+|  0    |  /bomberos-la3/dev/app/nginx-access         |  True |  365            |
+|  0    |  /bomberos-la3/dev/app/nginx-error          |  True |  365            |
+|  0    |  /bomberos-la3/dev/audit/cloudtrail         |  True |  365            |
+|  0    |  /bomberos-la3/dev/cicd/codebuild           |  True |  365            |
+|  0    |  /bomberos-la3/dev/network/vpc-flow-logs    |  True |  365            |
+|  0    |  /bomberos-la3/dev/system/cloudwatch-agent  |  True |  365            |
+|  0    |  /bomberos-la3/dev/system/messages          |  True |  365            |
+|  0    |  /bomberos-la3/dev/system/secure            |  True |  365            |
++-------+---------------------------------------------+-------+-----------------+

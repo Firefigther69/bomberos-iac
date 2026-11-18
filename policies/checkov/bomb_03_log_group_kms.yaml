@@ -1,0 +1,16 @@
+metadata:
+  id: "CKV2_BOMB_3"
+  name: "Estándar RS-05: los grupos de logs deben cifrarse con la CMK del proyecto y tener retención"
+  category: "LOGGING"
+definition:
+  and:
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_cloudwatch_log_group"
+      attribute: "kms_key_id"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types:
+        - "aws_cloudwatch_log_group"
+      attribute: "retention_in_days"
+      operator: "exists"

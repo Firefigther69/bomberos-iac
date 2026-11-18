@@ -1,0 +1,11 @@
+# 2026-11-16T20:10:58-03:00 · aws ssm describe-parameters --parameter-filters Key=Path,Option=Recursive,Values=/bomberos-la3 --query Parameters[].{Nombre:Name,Tipo:Type,KMS:KeyId} --output table
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+|                                                             DescribeParameters                                                             |
++------------------------------------------------------------------------------+---------------------------------------------+---------------+
+|                                      KMS                                     |                   Nombre                    |     Tipo      |
++------------------------------------------------------------------------------+---------------------------------------------+---------------+
+|  None                                                                        |  /bomberos-la3/dev/app/config               |  String       |
+|  arn:aws:kms:us-east-1:XXXXXXXXXXXX:key/64d1ca62-f3fd-4454-8109-6afbc7474a88 |  /bomberos-la3/dev/app/session-secret       |  SecureString |
+|  None                                                                        |  /bomberos-la3/dev/cloudwatch-agent/config  |  String       |
++------------------------------------------------------------------------------+---------------------------------------------+---------------+

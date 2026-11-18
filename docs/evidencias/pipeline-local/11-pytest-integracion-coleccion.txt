@@ -1,0 +1,29 @@
+$ python3 -m pytest tests/integration --collect-only -q -p no:cacheprovider
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rf01_health_responde_200
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rf01_portada_disponible
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rs08_cabeceras_de_seguridad
+tests/integration/test_infraestructura.py::TestServicioWeb::test_rs04_puerto_ssh_cerrado
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs02_imdsv2_obligatorio
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs04_sin_llave_ssh
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs05_volumenes_cifrados
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs01_rol_asociado
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs04_reglas_de_entrada_minimas
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rs04_salida_solo_https
+tests/integration/test_infraestructura.py::TestInstanciaYRed::test_rf04_flow_logs_activos
+tests/integration/test_infraestructura.py::TestAuditoria::test_rf05_trail_registrando
+tests/integration/test_infraestructura.py::TestAuditoria::test_rf05_trail_multiregion_con_validacion
+tests/integration/test_infraestructura.py::TestAuditoria::test_rf05_entrega_reciente
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_alarmas_creadas_con_notificacion
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_servicio_no_degradado
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_metricas_del_agente_publicadas
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf03_dashboard_existe
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf04_grupos_de_logs_cifrados_con_retencion
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf04_filtros_de_metricas_de_seguridad
+tests/integration/test_infraestructura.py::TestMonitoreo::test_rf05_topico_cifrado
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_bucket_endurecido[trail_bucket]
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_bucket_endurecido[artifacts_bucket]
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_bucket_endurecido[access_logs_bucket]
+tests/integration/test_infraestructura.py::TestProteccionDeDatos::test_rs05_rotacion_de_cmk
+
+25 tests collected in 0.04s
+[exit 0]

@@ -1,0 +1,11 @@
+metadata:
+  id: "CKV2_BOMB_4"
+  name: "Estándar RF-05: toda alarma debe tener una acción de notificación"
+  category: "LOGGING"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_cloudwatch_metric_alarm"
+    - "aws_cloudwatch_composite_alarm"
+  attribute: "alarm_actions"
+  operator: "exists"

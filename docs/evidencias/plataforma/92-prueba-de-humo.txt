@@ -1,0 +1,12 @@
+# 2026-11-16T20:11:01-03:00 · ./scripts/smoke_test.sh
+
+Esperando que http://54.159.242.171/health responda (máx. 300 s)...
+Pruebas de humo sobre http://54.159.242.171
+  [OK]    RF-01 /health responde 200 con status ok
+  [OK]    RF-01 portada responde 200
+  [OK]    RS-08 cabecera X-Content-Type-Options
+  [OK]    RS-08 cabecera Content-Security-Policy
+  [OK]    RS-08 versión de nginx oculta
+  [OK]    RS-08 métodos distintos de GET bloqueados
+  [OK]    RS-04 archivos ocultos no accesibles
+  [OK]    RS-04 puerto 22 cerrado
