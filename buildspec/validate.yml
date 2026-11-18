@@ -6,7 +6,7 @@ env:
   variables:
     TFLINT_VERSION: "0.55.1"
     GITLEAKS_VERSION: "8.21.2"
-    CHECKOV_VERSION: "3.2.334"
+    CHECKOV_VERSION: "3.4.3"
   # TF_VERSION, PROJECT y ENVIRONMENT llegan desde el proyecto CodeBuild (cicd.tf).
 
 phases:

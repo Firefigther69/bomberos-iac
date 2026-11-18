@@ -59,7 +59,7 @@ jobs:
 
       - name: checkov
         run: |
-          pip install --quiet checkov==3.2.334
+          pip install --quiet checkov==3.4.3
           checkov --config-file .checkov.yaml
 
       - name: shellcheck
