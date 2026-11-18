@@ -53,6 +53,10 @@ jobs:
           curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz | tar -xz gitleaks
           ./gitleaks detect --source . --redact --verbose
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: checkov
         run: |
           pip install --quiet checkov==3.2.334
@@ -77,6 +81,10 @@ jobs:
           terraform init -backend=false -input=false
           mkdir -p reports
           terraform test -junit-xml=reports/terraform-test.xml
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
       - name: pruebas estáticas del repositorio
         run: |

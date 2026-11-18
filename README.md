@@ -69,19 +69,19 @@ Las decisiones de diseño (ADR-01 a ADR-10), el flujo DevOps y el costo estimado
 
 ## 4. Servicios AWS utilizados
 
-| Servicio | Uso en el proyecto |
-|---|---|
-| Amazon VPC | Red aislada en 2 AZ, IGW, tablas de rutas, SG por defecto bloqueado, Flow Logs |
-| Amazon EC2 | Servidor web Amazon Linux 2023 (t3.micro), recuperación automática |
-| AWS IAM | Roles por función con políticas de mínimo privilegio, perfil de instancia, política de contraseñas |
-| AWS KMS | CMK con rotación anual para EBS, logs, S3, SNS, SSM y CodeBuild |
-| AWS Systems Manager | Parameter Store (secreto y configuración del agente), Session Manager |
-| Amazon S3 | Buckets endurecidos para auditoría, artefactos y registros de acceso |
-| Amazon CloudWatch | Logs, agente, métricas, filtros, Logs Insights, 26 alarmas, dashboard, detección de anomalías |
-| Amazon SNS | Notificación cifrada de incidentes |
-| AWS CloudTrail | Auditoría multi-región con validación de integridad |
-| Amazon EventBridge | Alertas en tiempo real y ejecución programada de pruebas |
-| AWS CodeBuild | Pipeline de validación y pruebas de integración con reportes JUnit |
+| Servicio | Uso en el proyecto | Por qué se eligió | Requerimientos |
+|---|---|---|---|
+| Amazon VPC | Red aislada en 2 AZ, IGW, tablas de rutas, SG por defecto bloqueado, Flow Logs | Aísla el sistema de la compañía y permite registrar todo el tráfico de red | RS-04, RF-04 |
+| Amazon EC2 | Servidor web Amazon Linux 2023 (t3.micro), recuperación automática | Control total del servidor y del agente de monitoreo a bajo costo (capa gratuita) | RF-01, RNF-01, RNF-04 |
+| AWS IAM | Roles por función con políticas de mínimo privilegio, perfil de instancia, política de contraseñas | Servicio nativo para identidades y permisos; evita llaves de acceso en el servidor | RS-01, RS-03 |
+| AWS KMS | CMK con rotación anual para EBS, logs, S3, SNS, SSM y CodeBuild | Una sola llave administrada y auditada cifra todos los datos sensibles | RS-05 |
+| AWS Systems Manager | Parameter Store (secreto y configuración del agente), Session Manager | Guarda secretos cifrados fuera del código y reemplaza SSH con sesiones auditadas | RS-06, RF-07 |
+| Amazon S3 | Buckets endurecidos para auditoría, artefactos y registros de acceso | Almacenamiento durable y barato para la evidencia de auditoría | RF-05, RNF-05 |
+| Amazon CloudWatch | Logs, agente, métricas, filtros, Logs Insights, 26 alarmas, dashboard, detección de anomalías | Centraliza métricas y logs y alerta sin instalar herramientas adicionales | RF-03, RF-04, RNF-02, RNF-03 |
+| Amazon SNS | Notificación cifrada de incidentes | Avisa por correo a los voluntarios sin un servidor de mensajería propio | RF-05, RNF-02 |
+| AWS CloudTrail | Auditoría multi-región con validación de integridad | Registra quién hizo qué y cuándo en la cuenta, con prueba de no alteración | RF-05, RS-07 |
+| Amazon EventBridge | Alertas en tiempo real y ejecución programada de pruebas | Reacciona a eventos de seguridad en segundos y automatiza verificaciones | RS-07, RF-06 |
+| AWS CodeBuild | Pipeline de validación y pruebas de integración con reportes JUnit | Ejecuta las pruebas dentro de AWS con un rol acotado y sin llaves | RF-06, RS-09 |
 
 ## 5. Estructura del repositorio
 
@@ -276,6 +276,36 @@ Despliegue real del 16-11-2026 en AWS Academy Learner Lab. El resumen, los incid
 | Pipeline y pruebas automatizadas | `pipeline-local/`, `plataforma/93-pruebas-integracion.txt` (25/25) |
 | Seguridad | `capturas/E17-session-manager.jpg`, `capturas/E17b-security-group.jpg`, `capturas/E20-s3-cifrado-etiquetas.jpg` |
 | Video narrado del entorno en funcionamiento (4 min 57 s) | `video-evidencia.mp4` |
+
+### Capturas principales
+
+**Dashboard de operación**
+
+![Dashboard](docs/evidencias/capturas/E05-dashboard.jpg)
+
+**Alarmas con notificación SNS**
+
+![Alarmas](docs/evidencias/capturas/E06-alarmas.jpg)
+
+**Incidente simulado: nginx detenido, detectado y recuperado**
+
+![Incidente nginx](docs/evidencias/capturas/E12-incidente-nginx.jpg)
+
+**CloudTrail multi-región con validación de integridad**
+
+![CloudTrail](docs/evidencias/capturas/E10-cloudtrail.jpg)
+
+**Accesos denegados detectados en Logs Insights**
+
+![Accesos denegados](docs/evidencias/capturas/E19-accesos-denegados.jpg)
+
+**Administración sin SSH con Session Manager**
+
+![Session Manager](docs/evidencias/capturas/E17-session-manager.jpg)
+
+**Grupo de seguridad con una sola regla de entrada**
+
+![Security group](docs/evidencias/capturas/E17b-security-group.jpg)
 
 El número de cuenta y los datos personales están enmascarados en todas las evidencias.
 
